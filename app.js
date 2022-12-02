@@ -12,10 +12,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public)"));
 
-//Connect to DB//
+//Connect to DB
 mongoose.connect('mongodb://localhost:27017/wikiDB');
 
-//Define DB schema//
+//Define DB schema
 const articleSchema = {
   title: String,
   content: String
@@ -23,7 +23,17 @@ const articleSchema = {
 
 const Article = mongoose.model("Article", articleSchema);
 
+//Add routes
 
+app.get("/articles", function(req, res){
+  Article.find(function(err, foundArticles){
+    if (!err){
+      res.send(foundArticles);
+    } else {
+      res.send(err);
+    }
+  });
+});
 
 
 
