@@ -34,7 +34,7 @@ app.route("/articles")
     } else {
       res.send(err);
     }
-      });
+      })
 })
 .post(function(req, res){
   const newArticle  = new Article({
@@ -58,7 +58,7 @@ app.route("/articles")
     } else {
       res.send(err);
     }
-  });
+  })
 });
 
 app.listen(3000, function() {
